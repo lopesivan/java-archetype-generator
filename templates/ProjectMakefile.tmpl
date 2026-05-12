@@ -1,0 +1,29 @@
+#raw
+MVN = mvn
+
+compile:
+	$(MVN) compile
+
+run:
+	$(MVN) exec:java
+
+package:
+	$(MVN) package
+
+jar:
+	$(MVN) jar:jar
+
+test:
+	$(MVN) test
+
+clean:
+	$(MVN) clean
+
+deps:
+	$(MVN) dependency:tree
+
+effective-pom:
+	$(MVN) help:effective-pom
+
+.PHONY: compile run package jar test clean deps effective-pom
+#end raw
