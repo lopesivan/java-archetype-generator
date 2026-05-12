@@ -4,70 +4,77 @@ from pathlib import Path
 from Cheetah.Template import Template
 
 
-def package_to_path(package_name: str) -> str:
-    return package_name.replace(".", "/")
+def render(template_file: Path, output_file: Path, ctx: dict):
+    text = template_file.read_text(encoding="utf-8")
+    result = str(Template(text, searchList=[ctx]))
 
-
-def render_template(template_path: Path, output_path: Path, context: dict):
-    text = template_path.read_text(encoding="utf-8")
-    rendered = str(Template(text, searchList=[context]))
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(rendered, encoding="utf-8")
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    output_file.write_text(result, encoding="utf-8")
 
 
 def main():
-    context = {
-        "group_id": "br.eng.ivanlopes",
-        "artifact_id": "kiko",
-        "version": "1.0-SNAPSHOT",
-        "package_name": "br.eng.ivanlopes",
-        "main_class": "App",
-        "java_version": "1.8",
-        "log4j_version": "2.18.0",
-        "junit_version": "4.11",
-        "maven_compiler_plugin_version": "3.1",
-        "maven_javadoc_plugin_version": "2.9.1",
-        "exec_maven_plugin_version": "1.2.1",
-        "author": "ivan",
-        "developer_id": "ivanlopes",
-        "developer_name": "Ivan Lopes",
-        "developer_email": "ivan@42algoritmos.com.br",
-        "developer_url": "http://ivanlopes.eng.br",
-        "timezone": "America/Sao_Paulo",
+    ctx = {
+        "archetype_group_id": "project._42algoritmos",
+        "archetype_artifact_id": "console-java-archetype",
+        "archetype_version": "1.0.0",
+        "archetype_name": "Java Console Application Archetype",
 
+        "java_version": "17",
+        "junit_version": "5.10.2",
+        "log4j_version": "2.23.1",
 
-
-
+        "maven_compiler_plugin_version": "3.13.0",
+        "exec_maven_plugin_version": "3.3.0",
+        "maven_jar_plugin_version": "3.4.2",
     }
 
-    output_root = Path(context["artifact_id"])
-    templates_root = Path("templates")
-
-    java_package_path = package_to_path(context["package_name"])
+    root = Path(ctx["archetype_artifact_id"])
+    tpl = Path("templates")
 
     files = {
-        "pom.xml.tmpl": output_root / "pom.xml",
-        "Makefile.tmpl": output_root / "Makefile",
-        "App.java.tmpl": output_root / "src/main/java" / java_package_path / f"{context['main_class']}.java",
-        "log4j2.xml.tmpl": output_root / "src/main/resources/log4j2.xml",
+        "archetype-pom.xml.tmpl":
+            root / "pom.xml",
+
+        "README.md.tmpl":
+            root / "README.md",
+
+        "archetype-metadata.xml.tmpl":
+            root / "src/main/resources/META-INF/maven/archetype-metadata.xml",
+
+        "generated-pom.xml.tmpl":
+            root / "src/main/resources/archetype-resources/pom.xml",
+
+        "App.java.tmpl":
+            root / "src/main/resources/archetype-resources/src/main/java/App.java",
+
+        "log4j2.xml.tmpl":
+            root / "src/main/resources/archetype-resources/src/main/resources/log4j2.xml",
+
+        "ProjectMakefile.tmpl":
+            root / "src/main/resources/archetype-resources/Makefile",
+
+        "ArchetypeMakefile.tmpl":
+            root / "Makefile",
+
+        "archetype.properties.tmpl":
+            root / "src/test/resources/projects/basic/archetype.properties",
+
+        "goal.txt.tmpl":
+            root / "src/test/resources/projects/basic/goal.txt",
+
+        "gitignore.tmpl":
+            root / ".gitignore",
+
+        "java-version.tmpl":
+            root / ".java-version",
     }
 
     for template_name, output_path in files.items():
-        render_template(
-            templates_root / template_name,
-            output_path,
-            context,
-        )
+        render(tpl / template_name, output_path, ctx)
 
-    test_java_dir = output_root / "src/test/java" / java_package_path
-    test_resources_dir = output_root / "src/test/resources" / java_package_path
-
-    test_java_dir.mkdir(parents=True, exist_ok=True)
-    test_resources_dir.mkdir(parents=True, exist_ok=True)
-
-    print(f"Projeto gerado em: {output_root}")
+    print(f"Archetype gerado em: {root}")
 
 
 if __name__ == "__main__":
     main()
+
