@@ -26,12 +26,19 @@ def main():
         "java_version": "1.8",
         "log4j_version": "2.18.0",
         "junit_version": "4.11",
+        "maven_compiler_plugin_version": "3.1",
+        "maven_javadoc_plugin_version": "2.9.1",
+        "exec_maven_plugin_version": "1.2.1",
         "author": "ivan",
         "developer_id": "ivanlopes",
         "developer_name": "Ivan Lopes",
         "developer_email": "ivan@42algoritmos.com.br",
         "developer_url": "http://ivanlopes.eng.br",
         "timezone": "America/Sao_Paulo",
+
+
+
+
     }
 
     output_root = Path(context["artifact_id"])
