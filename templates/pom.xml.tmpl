@@ -28,7 +28,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java-version>$java_version</java-version>
 
-    <log4j.configurationFile>${basedir}/src/main/resources/log4j2.xml</log4j.configurationFile>
+    <log4j.configurationFile>\${basedir}/src/main/resources/log4j2.xml</log4j.configurationFile>
 
     <junit.version>$junit_version</junit.version>
     <log4j.version>$log4j_version</log4j.version>
@@ -39,25 +39,25 @@
   </properties>
 
   <build>
-    <finalName>${project.artifactId}-${project.version}</finalName>
+    <finalName>\${project.artifactId}-\${project.version}</finalName>
 
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin.version}</version>
+        <version>\${maven.compiler.plugin.version}</version>
         <configuration>
-          <source>${java-version}</source>
-          <target>${java-version}</target>
+          <source>\${java-version}</source>
+          <target>\${java-version}</target>
         </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>${exec.maven.plugin.version}</version>
+        <version>\${exec.maven.plugin.version}</version>
         <configuration>
-          <mainClass>${main.class}</mainClass>
+          <mainClass>\${main.class}</mainClass>
         </configuration>
       </plugin>
     </plugins>
@@ -67,20 +67,20 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
+      <version>\${junit.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
-      <version>${log4j.version}</version>
+      <version>\${log4j.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>${log4j.version}</version>
+      <version>\${log4j.version}</version>
     </dependency>
   </dependencies>
 
