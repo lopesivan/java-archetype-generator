@@ -57,6 +57,9 @@ def main():
 
         "gitignore.tmpl":
             root / ".gitignore",
+
+        "java-version.tmpl":
+            root / ".java-version",
     }
 
     for template_name, output_path in files.items():
