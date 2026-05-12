@@ -60,6 +60,10 @@ def main():
 
         "java-version.tmpl":
             root / ".java-version",
+
+        "Makefile.tmpl":
+        root / "src/main/resources/archetype-resources/Makefile",
+
     }
 
     for template_name, output_path in files.items():
