@@ -1,0 +1,51 @@
+# $archetype_artifact_id
+
+Maven archetype for a modern Java console application.
+
+## Install archetype
+
+```bash
+make install
+```
+
+## Generate project
+
+```bash
+make generate
+```
+
+## Generate manually
+```bash
+mvn archetype:generate \
+  -DarchetypeGroupId=$archetype_group_id \
+  -DarchetypeArtifactId=$archetype_artifact_id \
+  -DarchetypeVersion=$archetype_version \
+  -DarchetypeCatalog=local \
+  -DgroupId=br.eng.ivanlopes \
+  -DartifactId=my-console \
+  -Dversion=1.0-SNAPSHOT \
+  -Dpackage=br.eng.ivanlopes \
+  -DinteractiveMode=false
+```
+
+## Run generated project
+```bash
+cd my-console
+make run
+```
+
+## Gerar e instalar
+
+```bash
+./generate.py
+cd console-java-archetype
+make install
+make generate
+```
+
+Depois:
+
+```bash
+cd my-console
+make run
+```
