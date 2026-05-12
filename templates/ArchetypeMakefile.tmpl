@@ -4,25 +4,25 @@ ARCHETYPE_GROUP_ID    = project._42algoritmos
 ARCHETYPE_ARTIFACT_ID = servlet-jakarta-webapp-archetype
 ARCHETYPE_VERSION     = 2.0.0
 
-LOCAL_REPO = $$(HOME)/.m2/repository
-ARCHETYPE_PATH = $(LOCAL_REPO)/project/_42algoritmos/$(ARCHETYPE_ARTIFACT_ID)/$(ARCHETYPE_VERSION)
+LOCAL_REPO = \${HOME}/.m2/repository
+ARCHETYPE_PATH = \$(LOCAL_REPO)/project/_42algoritmos/\$(ARCHETYPE_ARTIFACT_ID)/\$(ARCHETYPE_VERSION)
 
 install:
-	$(MVN) install
+	\$(MVN) install
 
 uninstall:
-	rm -rf $(ARCHETYPE_PATH)
+	rm -rf \$(ARCHETYPE_PATH)
 
 clean:
-	$(MVN) clean
+	\$(MVN) clean
 
 reinstall: uninstall install
 
 generate:
-	$(MVN) archetype:generate \
-		-DarchetypeGroupId=$(ARCHETYPE_GROUP_ID) \
-		-DarchetypeArtifactId=$(ARCHETYPE_ARTIFACT_ID) \
-		-DarchetypeVersion=$(ARCHETYPE_VERSION) \
+	\$(MVN) archetype:generate \
+		-DarchetypeGroupId=\$(ARCHETYPE_GROUP_ID) \
+		-DarchetypeArtifactId=\$(ARCHETYPE_ARTIFACT_ID) \
+		-DarchetypeVersion=\$(ARCHETYPE_VERSION) \
 		-DarchetypeCatalog=local \
 		-DgroupId=br.eng.ivanlopes \
 		-DartifactId=my-webapp \
