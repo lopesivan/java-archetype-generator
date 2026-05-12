@@ -1,3 +1,0 @@
-#!/workspace/work/cheetah/java-archetype-generator/.venv/bin/python
-from Cheetah.CheetahWrapper import _cheetah_compile
-_cheetah_compile()
