@@ -1,0 +1,27 @@
+MVN = mvn
+
+compile:
+	$(MVN) compile
+
+run:
+	$(MVN) jetty:run
+
+jetty:
+	$(MVN) jetty:run
+
+tomcat:
+	$(MVN) tomcat7:run
+
+package:
+	$(MVN) package
+
+test:
+	$(MVN) test
+
+clean:
+	$(MVN) clean
+
+deps:
+	$(MVN) dependency:tree
+
+.PHONY: compile run jetty package test clean deps
