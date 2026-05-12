@@ -46,8 +46,8 @@ def main():
         "HelloServlet.java.tmpl":
             root / "src/main/resources/archetype-resources/src/main/java/HelloServlet.java",
 
-        "index.jsp.tmpl":
-            root / "src/main/resources/archetype-resources/src/main/webapp/index.jsp",
+        "index.html.tmpl":
+        root / "src/main/resources/archetype-resources/src/main/webapp/index.html",
 
         "archetype.properties.tmpl":
             root / "src/test/resources/projects/basic/archetype.properties",
