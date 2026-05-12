@@ -1,19 +1,19 @@
-package $package_name;
+package \${package};
 
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class $main_class
+public class App
 {
-    static final Logger logger = LogManager.getLogger(${main_class}.class.getName());
-    public static void main(String args[])
+    private static final Logger logger = LogManager.getLogger(App.class);
+
+    public static void main(String[] args)
     {
         logger.trace("Entering application.");
-        logger.error("Didn't do it.");
-        System.out.println("Hello, World!!!");
 
+        System.out.println("Hello from Java console application!");
+
+        logger.info("Application executed successfully.");
         logger.trace("Exiting application.");
     }
 }
-// vim: set ts=4 sw=4 tw=78 ft=java:
-
