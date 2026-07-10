@@ -22,6 +22,7 @@ def main():
         "java_version": "17",
         "jakarta_servlet_version": "6.0.0",
         "junit_version": "5.10.2",
+        "lombok_version": "1.18.32",
         "maven_compiler_plugin_version": "3.13.0",
         "maven_war_plugin_version": "3.4.0",
         "jetty_plugin_version": "11.0.20",
