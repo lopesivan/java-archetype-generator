@@ -22,6 +22,7 @@ def main():
         "java_version": "17",
         "junit_version": "5.10.2",
         "log4j_version": "2.23.1",
+        "lombok_version": "1.18.32",
 
         "maven_compiler_plugin_version": "3.13.0",
         "exec_maven_plugin_version": "3.3.0",
@@ -77,4 +78,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
