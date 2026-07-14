@@ -16,8 +16,8 @@ def main():
     ctx = {
         "archetype_group_id": "project._42algoritmos",
         "archetype_artifact_id": "servlet-jakarta-webapp-archetype",
-        "archetype_version": "2.0.0",
-        "archetype_name": "Servlet Jakarta WebApp Archetype",
+        "archetype_version": "2.0.1",
+        "archetype_name": "Java Console App Archetype",
 
         "java_version": "17",
         "jakarta_servlet_version": "6.0.0",
@@ -67,6 +67,13 @@ def main():
 
         "ProjectMakefile.tmpl":
         root / "src/main/resources/archetype-resources/Makefile",
+
+        "classpath.tmpl":
+        root / ".classpath",
+
+        "project.tmpl":
+        root / ".project",
+
     }
 
     for template_name, output_path in files.items():
