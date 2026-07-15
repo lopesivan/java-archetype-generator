@@ -44,11 +44,8 @@ def main():
         "generated-pom.xml.tmpl":
             root / "src/main/resources/archetype-resources/pom.xml",
 
-        "HelloServlet.java.tmpl":
-            root / "src/main/resources/archetype-resources/src/main/java/HelloServlet.java",
-
-        "index.html.tmpl":
-        root / "src/main/resources/archetype-resources/src/main/webapp/index.html",
+        "App.java.tmpl":
+            root / "src/main/resources/archetype-resources/src/main/java/App.java",
 
         "archetype.properties.tmpl":
             root / "src/test/resources/projects/basic/archetype.properties",
