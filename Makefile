@@ -1,15 +1,16 @@
 
+TARGET=servlet-jakarta-webapp-archetype
 
 build:
 	./generate.py
 
 clean:
-	rm -rf java-console-app-archetype
+	rm -rf $(TARGET)
 
 install:
-	make -C java-console-app-archetype
+	make -C $(TARGET)
 
 uninstall:
-	make -C java-console-app-archetype uninstall
+	make -C $(TARGET) uninstall
 
 deploy: build install
