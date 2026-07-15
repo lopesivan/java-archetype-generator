@@ -1,5 +1,5 @@
 
-TARGET=servlet-jakarta-webapp-archetype
+TARGET=java-console-app-archetype
 
 build:
 	./generate.py
