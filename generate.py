@@ -69,10 +69,10 @@ def main():
         root / "src/main/resources/archetype-resources/Makefile",
 
         "classpath.tmpl":
-        root / ".classpath",
+        root / "src/main/resources/archetype-resources/.classpath",
 
         "project.tmpl":
-        root / ".project",
+        root / "src/main/resources/archetype-resources/.project",
 
     }
 
