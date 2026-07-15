@@ -16,4 +16,5 @@ pyvenv.cfg
 pip-selfcheck.json
 java-console-app-archetype/*
 servlet-jakarta-webapp-archetype/*
+
 # End of https://www.toptal.com/developers/gitignore/api/venv
