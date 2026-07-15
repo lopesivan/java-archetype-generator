@@ -18,12 +18,10 @@ def main():
         "archetype_artifact_id": "java-console-app-archetype",
         "archetype_version": "2.0.1",
         "archetype_name": "Java Console App Archetype",
-
-
         "java_version": "17",
-        "jakarta_servlet_version": "6.0.0",  # desabilitados
-        "maven_war_plugin_version": "3.4.0",  # desabilitados
-        "jetty_plugin_version": "11.0.20",  # desabilitados
+        "jakarta_servlet_version": "6.0.0",
+        "maven_war_plugin_version": "3.4.0",
+        "jetty_plugin_version": "11.0.20",
         "junit_version": "5.10.2",
         "lombok_version": "1.18.32",
         "maven_compiler_plugin_version": "3.13.0",
@@ -31,6 +29,13 @@ def main():
 
     root = Path(ctx["archetype_artifact_id"])
     tpl = Path("templates")
+
+    # 🔑 Variáveis de paths comuns
+    main_resources = root / "src/main/resources/archetype-resources"
+    main_java = main_resources / "src/main/java"
+    main_webapp = main_resources / "src/main/webapp"
+    test_resources = root / "src/test/resources/projects/basic"
+    meta_inf = root / "src/main/resources/META-INF/maven"
 
     files = {
         "archetype-pom.xml.tmpl":
@@ -40,22 +45,22 @@ def main():
             root / "README.md",
 
         "archetype-metadata.xml.tmpl":
-            root / "src/main/resources/META-INF/maven/archetype-metadata.xml",
+            meta_inf / "archetype-metadata.xml",
 
         "generated-pom.xml.tmpl":
-            root / "src/main/resources/archetype-resources/pom.xml",
+            main_resources / "pom.xml",
 
         "HelloServlet.java.tmpl":
-            root / "src/main/resources/archetype-resources/src/main/java/HelloServlet.java",
+            main_java / "HelloServlet.java",
 
         "index.html.tmpl":
-        root / "src/main/resources/archetype-resources/src/main/webapp/index.html",
+            main_webapp / "index.html",
 
         "archetype.properties.tmpl":
-            root / "src/test/resources/projects/basic/archetype.properties",
+            test_resources / "archetype.properties",
 
         "goal.txt.tmpl":
-            root / "src/test/resources/projects/basic/goal.txt",
+            test_resources / "goal.txt",
 
         "gitignore.tmpl":
             root / ".gitignore",
@@ -64,17 +69,19 @@ def main():
             root / ".java-version",
 
         "ArchetypeMakefile.tmpl":
-        root / "Makefile",
+            root / "Makefile",
+
+        "gitignore.tmpl":
+            main_resources / ".gitignore",
 
         "ProjectMakefile.tmpl":
-        root / "src/main/resources/archetype-resources/Makefile",
+            main_resources / "Makefile",
 
         "classpath.tmpl":
-        root / "src/main/resources/archetype-resources/.classpath",
+            main_resources / ".classpath",
 
         "project.tmpl":
-        root / "src/main/resources/archetype-resources/.project",
-
+            main_resources / ".project",
     }
 
     for template_name, output_path in files.items():
