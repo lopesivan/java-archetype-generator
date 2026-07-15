@@ -1,20 +1,10 @@
 MVN  = mvn
-CURL = curl
-HOST = localhost
-PORT = 8080
 
 compile:
 	\$(MVN) compile
 
 run:
-	\$(MVN) jetty:run
-
-jetty:
-	echo "http://localhost:8080/"
-	\$(MVN) jetty:run
-
-\#tomcat:
-\#	\$(MVN) tomcat7:run
+	\$(MVN)  exec:java
 
 package:
 	\$(MVN) package
@@ -22,13 +12,13 @@ package:
 test:
 	\$(MVN) test
 
-show:
-    \$(CURL) \$(HOST):\$(PORT)
-
 clean:
 	\$(MVN) clean
 
 deps:
 	\$(MVN) dependency:tree
 
-.PHONY: compile run jetty package test clean deps show
+jar:
+	\$(MVN)  jar:jar
+
+.PHONY: compile run package test clean deps jar
