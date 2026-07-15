@@ -1,0 +1,56 @@
+return {
+    tasks = {
+
+        -- mvn package -Dorg.slf4j.simpleLogger.defaultLogLevel=debug
+        ["mvn package -Dorg.slf4j.simpleLogger.defaultLogLevel=debug"] = {
+            command = function()
+                require("config.nvim_dev").app(
+                    "mvn",
+                    {
+                        "package",
+                        "-Dorg.slf4j.simpleLogger.defaultLogLevel=debug",
+                    }
+                )
+            end,
+            condition = require("yabs.conditions").file_exists("pom.xml"),
+            type = "lua",
+        },
+
+        -- mvn compile
+        ["mvn compile"] = {
+            command = function()
+                require("config.nvim_dev").app("mvn", { "compile" })
+            end,
+            condition = require("yabs.conditions").file_exists("pom.xml"),
+            type = "lua",
+        },
+
+        -- mvn clean
+        ["mvn clean"] = {
+            command = function()
+                require("config.nvim_dev").app("mvn", { "clean" })
+            end,
+            condition = require("yabs.conditions").file_exists("pom.xml"),
+            type = "lua",
+        },
+
+        -- mvn exec:java
+        ["mvn exec:java"] = {
+            command = function()
+                require("config.nvim_dev").app("mvn", { "exec:java" })
+            end,
+            condition = require("yabs.conditions").file_exists("pom.xml"),
+            type = "lua",
+        },
+
+        -- mvn jar:jar
+        ["mvn jar:jar"] = {
+            command = function()
+                require("config.nvim_dev").app("mvn", { "jar:jar" })
+            end,
+            condition = require("yabs.conditions").file_exists("pom.xml"),
+            type = "lua",
+        },
+    },
+}
+
