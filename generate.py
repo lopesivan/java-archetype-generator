@@ -31,6 +31,13 @@ def main():
     root = Path(ctx["archetype_artifact_id"])
     tpl = Path("templates")
 
+    # 🔑 Variáveis de paths comuns
+    main_resources = root / "src/main/resources/archetype-resources"
+    main_java = main_resources / "src/main/java"
+    main_webapp = main_resources / "src/main/webapp"
+    test_resources = root / "src/test/resources/projects/basic"
+    meta_inf = root / "src/main/resources/META-INF/maven"
+
     files = {
         "archetype-pom.xml.tmpl":
             root / "pom.xml",
@@ -39,22 +46,22 @@ def main():
             root / "README.md",
 
         "archetype-metadata.xml.tmpl":
-            root / "src/main/resources/META-INF/maven/archetype-metadata.xml",
+            meta_inf / "archetype-metadata.xml",
 
         "generated-pom.xml.tmpl":
-            root / "src/main/resources/archetype-resources/pom.xml",
+            main_resources / "pom.xml",
 
         "HelloServlet.java.tmpl":
-            root / "src/main/resources/archetype-resources/src/main/java/HelloServlet.java",
+            main_java / "HelloServlet.java",
 
         "index.html.tmpl":
-        root / "src/main/resources/archetype-resources/src/main/webapp/index.html",
+            main_webapp / "index.html",
 
         "archetype.properties.tmpl":
-            root / "src/test/resources/projects/basic/archetype.properties",
+            test_resources / "archetype.properties",
 
         "goal.txt.tmpl":
-            root / "src/test/resources/projects/basic/goal.txt",
+            test_resources / "goal.txt",
 
         "gitignore.tmpl":
             root / ".gitignore",
@@ -63,17 +70,19 @@ def main():
             root / ".java-version",
 
         "ArchetypeMakefile.tmpl":
-        root / "Makefile",
+            root / "Makefile",
+
+        "gitignore.tmpl":
+            main_resources / ".gitignore",
 
         "ProjectMakefile.tmpl":
-        root / "src/main/resources/archetype-resources/Makefile",
+            main_resources / "Makefile",
 
         "classpath.tmpl":
-        root / "src/main/resources/archetype-resources/.classpath",
+            main_resources / ".classpath",
 
         "project.tmpl":
-        root / "src/main/resources/archetype-resources/.project",
-
+            main_resources / ".project",
     }
 
     for template_name, output_path in files.items():
