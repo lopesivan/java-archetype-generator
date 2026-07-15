@@ -1,0 +1,20 @@
+package \${package};
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class App
+{
+    private static final Logger logger = LogManager.getLogger(App.class);
+
+    public static void main(String[] args)
+    {
+        logger.trace("Entering application.");
+
+        System.out.println("Hello from Java console application!");
+
+        logger.info("Application executed successfully.");
+        logger.trace("Exiting application.");
+    }
+}
+
