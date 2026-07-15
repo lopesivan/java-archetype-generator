@@ -15,17 +15,18 @@ def render(template_file: Path, output_file: Path, ctx: dict):
 def main():
     ctx = {
         "archetype_group_id": "project._42algoritmos",
-        "archetype_artifact_id": "servlet-jakarta-webapp-archetype",
+        "archetype_artifact_id": "java-console-app-archetype",
         "archetype_version": "2.0.1",
-        "archetype_name": "Servlet Jakarta WebApp Archetype",
+        "archetype_name": "Java Console App Archetype",
+
 
         "java_version": "17",
-        "jakarta_servlet_version": "6.0.0",
+        "jakarta_servlet_version": "6.0.0",  # desabilitados
+        "maven_war_plugin_version": "3.4.0",  # desabilitados
+        "jetty_plugin_version": "11.0.20",  # desabilitados
         "junit_version": "5.10.2",
         "lombok_version": "1.18.32",
         "maven_compiler_plugin_version": "3.13.0",
-        "maven_war_plugin_version": "3.4.0",
-        "jetty_plugin_version": "11.0.20",
     }
 
     root = Path(ctx["archetype_artifact_id"])
