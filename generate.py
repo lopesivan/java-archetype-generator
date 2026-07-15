@@ -15,9 +15,9 @@ def render(template_file: Path, output_file: Path, ctx: dict):
 def main():
     ctx = {
         "archetype_group_id": "project._42algoritmos",
-        "archetype_artifact_id": "java-console-app-archetype",
+        "archetype_artifact_id": "servlet-jakarta-webapp-archetype",
         "archetype_version": "2.0.1",
-        "archetype_name": "Java Console App Archetype",
+        "archetype_name": "Servlet Jakarta WebApp Archetype",
 
         "java_version": "17",
         "jakarta_servlet_version": "6.0.0",
