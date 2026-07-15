@@ -86,6 +86,9 @@ def main():
 
         "project.tmpl":
             main_resources / ".project",
+
+        "yabs.tmpl":
+            main_resources / ".yabs",
     }
 
     for template_name, output_path in files.items():
