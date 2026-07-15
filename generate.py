@@ -18,13 +18,16 @@ def main():
         "archetype_artifact_id": "java-console-app-archetype",
         "archetype_version": "2.0.1",
         "archetype_name": "Java Console App Archetype",
+
         "java_version": "17",
-        "jakarta_servlet_version": "6.0.0",
-        "maven_war_plugin_version": "3.4.0",
-        "jetty_plugin_version": "11.0.20",
+
         "junit_version": "5.10.2",
+        "log4j_version": "2.23.1",
         "lombok_version": "1.18.32",
+
         "maven_compiler_plugin_version": "3.13.0",
+        "exec_maven_plugin_version": "3.3.0",
+        "maven_jar_plugin_version": "3.4.2",
     }
 
     root = Path(ctx["archetype_artifact_id"])
@@ -33,6 +36,7 @@ def main():
     # 🔑 Variáveis de paths comuns
     main_resources = root / "src/main/resources/archetype-resources"
     main_java = main_resources / "src/main/java"
+    main_xml = main_resources / "src/main/resources"
     main_webapp = main_resources / "src/main/webapp"
     test_resources = root / "src/test/resources/projects/basic"
     meta_inf = root / "src/main/resources/META-INF/maven"
@@ -50,11 +54,11 @@ def main():
         "generated-pom.xml.tmpl":
             main_resources / "pom.xml",
 
-        "HelloServlet.java.tmpl":
-            main_java / "HelloServlet.java",
+        "App.java.tmpl":
+            main_java / "App.java",
 
-        "index.html.tmpl":
-            main_webapp / "index.html",
+        "log4j2.xml.tmpl":
+            main_xml / "log4j2.xml",
 
         "archetype.properties.tmpl":
             test_resources / "archetype.properties",
