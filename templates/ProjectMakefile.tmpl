@@ -1,4 +1,7 @@
-MVN = mvn
+MVN  = mvn
+CURL = curl
+HOST = localhost
+PORT = 8080
 
 compile:
 	\$(MVN) compile
@@ -19,10 +22,13 @@ package:
 test:
 	\$(MVN) test
 
+show:
+    \$(CURL) \$(HOST):\$(PORT)
+
 clean:
 	\$(MVN) clean
 
 deps:
 	\$(MVN) dependency:tree
 
-.PHONY: compile run jetty package test clean deps
+.PHONY: compile run jetty package test clean deps show
