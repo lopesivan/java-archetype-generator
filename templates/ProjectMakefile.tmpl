@@ -10,7 +10,7 @@ run:
 	\$(MVN) jetty:run
 
 jetty:
-	echo "http://localhost:8080/"
+	echo "http://\$(HOST):\$(PORT)"
 	\$(MVN) jetty:run
 
 \#tomcat:
